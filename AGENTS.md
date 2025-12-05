@@ -22,97 +22,74 @@
 ---
 
 ## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
-**Directives:** Detect the project type and apply the corresponding **Apex Toolchain**. This repository, `FocusFlow-Distraction-Free-Browser-Extension`, is a TypeScript-based browser extension.
+**Directives:** Detect the project type and apply the **Apex Toolchain**. This repository, `MinimalistView-Content-Focus-Browser-Extension`, is a modern browser extension.
 
 *   **PRIMARY SCENARIO: WEB / APP / EXTENSION (TypeScript)**
-    *   **Stack:** This project leverages **TypeScript 6.x** with **strict** type checking enabled. The build tooling is **Vite 7 (Rolldown)**, ensuring rapid development builds and optimized production bundles. For native desktop integration or advanced cross-platform capabilities, **Tauri v2.x** is the preferred choice. For pure browser extensions, **WXT (Web Extension Tooling)** is the standard for managing manifest V3 compatibility and cross-browser consistency.
-    *   **State Management:** Utilize **Signals (Standardized)** for efficient and declarative UI updates.
-    *   **Styling:** **TailwindCSS v4** is mandated for utility-first, highly composable styling.
-    *   **Linting & Formatting:** **Biome** is the standard for ultra-fast, all-in-one code quality.
-    *   **Testing:** **Vitest** for unit and component testing, with **Playwright** for end-to-end testing.
-    *   **Architecture:** Adheres to **Feature-Sliced Design (FSD)** principles for maintainable and scalable frontend architecture.
+    *   **Stack:** This project leverages **TypeScript 6.x (Strict)**. The build system uses **Vite 7 (Rolldown)** for lightning-fast development. For native desktop integration (if applicable later), **Tauri v2.x** is the standard. For browser extension development, **WXT (Web Extension Tooling)** is mandated for cross-browser compatibility and simplified manifest management.
+    *   **State Management:** **Signals** are the standardized approach for reactive state management.
+    *   **UI Framework/Styling:** **TailwindCSS v4** for utility-first styling, ensuring rapid UI development and maintainability.
+    *   **Linting & Formatting:** **Biome** is the chosen tool for extreme speed in linting, formatting, and code quality checks.
+    *   **Testing:** **Vitest** for unit and component testing, and **Playwright** for end-to-end (E2E) testing.
+    *   **Architecture:** Adheres to the **Feature-Sliced Design (FSD)** pattern for robust modularity and scalability.
 
-*   **SECONDARY SCENARIO B: SYSTEMS / PERFORMANCE (Rust/Go) - *Not applicable for this project's primary function.***
-    *   **Stack:** Rust (Cargo), Go (Modules).
-    *   **Lint:** Clippy / GolangCI-Lint.
-    *   **Architecture:** Hexagonal Architecture (Ports & Adapters).
+*   **SECONDARY SCENARIO B: SYSTEMS / PERFORMANCE (Rust/Go) - *Not applicable for this project.***
 
-*   **TERTIARY SCENARIO C: DATA / AI / SCRIPTS (Python) - *Not applicable for this project's primary function.***
-    *   **Stack:** uv (Manager), Ruff (Linter), Pytest (Test).
-    *   **Architecture:** Modular Monolith or Microservices.
+*   **TERTIARY SCENARIO C: DATA / AI / SCRIPTS (Python) - *Not applicable for this project.***
 
 ---
 
-## 4. APEX DEVELOPMENT & QUALITY PRINCIPLES
-*   **General:** **SOLID**, **DRY**, **YAGNI**, **KISS**.
-*   **Code Quality:** **Biome** for linting and formatting. Enforce strict linting rules. Automated checks via CI.
-*   **Testing:** Comprehensive test suite using **Vitest** for unit/component tests and **Playwright** for E2E tests. Target **90%+ code coverage**.
-*   **Build & Deployment:** **Vite** for build, **WXT** for extension packaging. CI/CD pipeline for automated testing and release.
-*   **Security:** Follow **OWASP Top 10** for Browser Extensions. Sanitize all DOM manipulations. Restrict permissions rigorously. Implement Content Security Policy (CSP) where applicable.
-*   **Documentation:** Maintain comprehensive `README.md`, `AGENTS.md`, and inline code documentation.
+## 4. DEVELOPMENT STANDARDS & PROTOCOLS
+*   **CODE QUALITY:**
+    *   **SOLID Principles:** Mandated for all object-oriented designs.
+    *   **DRY (Don't Repeat Yourself):** Enforced rigorously. Code duplication is a critical defect.
+    *   **YAGNI (You Ain't Gonna Need It):** Build only what is necessary now.
+    *   **KISS (Keep It Simple, Stupid):** Prioritize simplicity in design and implementation.
+    *   **Type Safety:** **Strict** TypeScript is non-negotiable.
+*   **TESTING MANDATES:**
+    *   **Unit Tests:** Cover all core logic and functions using Vitest.
+    *   **Integration Tests:** Verify interactions between modules.
+    *   **E2E Tests:** Use Playwright to simulate user interactions across the extension's functionality.
+    *   **Code Coverage:** Aim for **90%+** coverage. Use Codecov for reporting.
+*   **LINTHANDLING:**
+    *   **Biome:** Run `biome check --apply` and `biome format --write` before committing.
+    *   **CI/CD:** Automated checks run on every push/PR.
+*   **VERSION CONTROL:**
+    *   **Git Flow:** Standardized branching strategy (main, develop, feature/*, hotfix/*).
+    *   **Commit Messages:** Follow Conventional Commits specification (e.g., `feat: add new feature`, `fix: resolve bug`).
 
 ---
 
-## 5. CONTINUOUS INTEGRATION & DELIVERY (CI/CD)
-*   **Platform:** GitHub Actions.
-*   **Workflow (`.github/workflows/ci.yml`):**
-    *   Trigger: `push` to `main`, `pull_request` to `main`.
-    *   Jobs:
-        *   `setup`: Checkout code, install Node.js, install dependencies (`npm ci` or `yarn install`).
-        *   `lint`: Run `biome check --apply`.
-        *   `test`: Run `vitest run`.
-        *   `e2e`: Run `npx playwright install --with-deps && npx playwright test`.
-        *   `build`: Run `vite build`.
-*   **Deployment:** Automated release tagging and packaging upon merge to `main`.
+## 5. ARCHITECTURE: FEATURE-SLICED DESIGN (FSD) APPLIED
+*   **LAYERS:**
+    *   `app`: Bootstrap, routing, global state.
+    *   `processes`: Cross-cutting business logic.
+    *   `pages`: UI for specific application pages.
+    *   `widgets`: Self-contained UI components.
+    *   `features`: Feature modules (e.g., `content-filtering`, `ui-minimization`).
+    *   `entities`: Core domain entities.
+    *   `shared`: Reusable utilities, types, constants, UI primitives.
+*   **INTERACTION:** Strict layering: higher layers depend on lower layers. No backward dependencies.
 
 ---
 
-## 6. COMMUNICATION & COLLABORATION
-*   **Contributing (`.github/CONTRIBUTING.md`):** Outline contribution guidelines, code of conduct, and PR process.
-*   **Issue Reporting (`.github/ISSUE_TEMPLATE/bug_report.md`):** Standardized template for bug reports.
-*   **Pull Requests (`.github/PULL_REQUEST_TEMPLATE.md`):** Standardized template for PRs, including checks and summaries.
-*   **Security Reporting (`.github/SECURITY.md`):** Guidelines for reporting security vulnerabilities.
-
----
-
-## 7. REPOSITORY METADATA & STRUCTURE
-*   **Name:** `FocusFlow-Distraction-Free-Browser-Extension`
-*   **Description:** "A high-performance browser extension utilizing DOM manipulation and CSS injection to create deeply customizable, distraction-free reading and browsing environments."
-*   **Topics:** `BrowserExtension`, `Minimalism`, `Productivity`, `Frontend`, `TypeScript`, `Vite`, `TailwindCSS`, `WXT`, `Biome`, `Vitest`, `Playwright`.
-*   **File Structure:** Follows **Feature-Sliced Design (FSD)** principles.
-    *   `src/`
-        *   `app/` (Entry points, configuration)
-        *   `processes/` (High-level business logic)
-        *   `pages/` (UI for specific pages/views)
-        *   `widgets/` (Composite UI components)
-        *   `features/` (Specific features, often containing UI and logic)
-        *   `entities/` (Core business domain objects)
-        *   `shared/` (Utilities, UI primitives, configuration)
-    *   `public/` (Static assets)
-    *   `tests/` (End-to-end tests)
-    *   `vite.config.ts`
-    *   `wxt.config.ts`
-    *   `biome.json`
-    *   `vitest.config.ts`
-    *   `playwright.config.ts`
-    *   `package.json`
-    *   `tsconfig.json`
-    *   `README.md`
-    *   `LICENSE`
-    *   `.gitignore`
-    *   `AGENTS.md`
-    *   `.github/` (Workflows, Issue Templates, etc.)
-
----
-
-## 8. FUTURE-PROOFING & ADAPTABILITY
-*   **Modularity:** FSD ensures components are reusable and independent.
-*   **Upgradability:** Regularly review and update dependencies (Vite, Tauri/WXT, TypeScript, Biome, Vitest, Playwright) to leverage the latest features and security patches. **uv** can be considered if migrating to Python ecosystem, but for TS, npm/yarn/pnpm is standard.
-*   **Extensibility:** Design features to be pluggable, allowing for future enhancements or integrations without major refactoring.
-
----
-
-## 9. ARCHIVAL PROTOCOL (WHEN APPLICABLE)
-If a project is to be archived, it is **retired with honor**. Metadata (Name, Description, Topics) will be updated to reflect its legacy status while maintaining professional clarity. All documentation will be finalized to serve as a historical artifact.
-
----
+## 6. AI AGENT DIRECTIVES FOR `MinimalistView-Content-Focus-Browser-Extension`
+*   **PRIMARY FUNCTION:** Enhance user focus by minimizing UI elements and distractions on web pages.
+*   **CORE TECHNOLOGY STACK:** TypeScript (Strict), Vite 7, WXT, TailwindCSS v4, Biome, Vitest, Playwright.
+*   **ARCHITECTURAL PATTERN:** Feature-Sliced Design (FSD).
+*   **KEY FUNCTIONALITIES:**
+    *   DOM Manipulation for UI element hiding/showing.
+    *   User-configurable filter lists/rules.
+    *   Cross-browser compatibility (Chrome, Firefox, Edge).
+*   **VERIFICATION COMMANDS:**
+    *   **Install Dependencies:** `uv ruff install --all`
+    *   **Run Linter/Formatter:** `biome check --apply`
+    *   **Run Unit Tests:** `vitest run`
+    *   **Run E2E Tests:** `playwright test`
+    *   **Start Dev Server:** `vite dev`
+*   **SECURITY CONSIDERATIONS:**
+    *   Sanitize all user inputs to prevent XSS attacks.
+    *   Minimize required permissions in the extension manifest.
+    *   Regularly audit dependencies for known vulnerabilities.
+*   **FUTURE ENHANCEMENTS:**
+    *   AI-powered distraction detection/suggestion.
+    *   Integration with browser history for context-aware minimization.
