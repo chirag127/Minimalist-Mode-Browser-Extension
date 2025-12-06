@@ -1,75 +1,139 @@
-# Contributing to MinimalistView-Content-Focus-Browser-Extension
+# 🚀 Contributing to ZenFlow-Distraction-Free-Reading-Browser-Extension
 
-Thank you for considering contributing to MinimalistView-Content-Focus-Browser-Extension!
+Thank you for considering contributing to the ZenFlow Browser Extension! We welcome all contributions, from bug reports and feature requests to code submissions.
 
-This project adheres to the **Apex Technical Authority** standards, emphasizing **Zero-Defect, High-Velocity, Future-Proof** development. All contributions must align with these principles.
+## 1. Our Philosophy
 
-## 1. Code of Conduct
+ZenFlow aims to be a distraction-free sanctuary for readers. Contributions should align with our core principles:
 
-This project adheres to the Contributor Covenant Code of Conduct. Please review the [CODE_OF_CONDUCT.md](https://github.com/chirag127/MinimalistView-Content-Focus-Browser-Extension/blob/main/CODE_OF_CONDUCT.md) file for details.
+*   **Simplicity:** Keep features focused and intuitive.
+*   **Performance:** Ensure the extension is lightweight and fast.
+*   **User Focus:** Prioritize enhancements that improve the reading experience.
+*   **Maintainability:** Write clean, well-documented, and testable code.
 
-## 2. How to Contribute
+## 2. Getting Started
 
-We welcome contributions in various forms, including bug reports, feature requests, documentation improvements, and code contributions.
+### 2.1. Prerequisites
 
-### 2.1. Reporting Bugs
+Before you start, ensure you have the following installed:
 
-1.  **Search Existing Issues:** Before reporting a bug, please check if it has already been reported.
-2.  **Detailed Description:** If it's a new bug, open a new issue using the `Bug Report` template. Provide as much detail as possible:
-    *   Browser version and operating system.
-    *   Clear steps to reproduce the bug.
-    *   Screenshots or recordings (if applicable).
-    *   Expected vs. Actual behavior.
+*   **Node.js:** Version 18 or higher.
+*   **npm** or **yarn** or **pnpm** (we recommend pnpm for efficiency).
+*   **Git**.
 
-### 2.2. Suggesting Enhancements
+### 2.2. Setup
 
-1.  **Search Existing Issues:** Check if your idea has already been suggested.
-2.  **Feature Request:** Open a new issue using the `Feature Request` template. Clearly describe the proposed enhancement and its benefits.
+Follow these steps to set up a development environment:
 
-### 2.3. Pull Requests (Code Contributions)
+1.  **Clone the repository:**
+    bash
+    git clone https://github.com/chirag127/ZenFlow-Distraction-Free-Reading-Browser-Extension.git
+    cd ZenFlow-Distraction-Free-Reading-Browser-Extension
+    
 
-1.  **Fork the Repository:** Fork the [MinimalistView-Content-Focus-Browser-Extension](https://github.com/chirag127/MinimalistView-Content-Focus-Browser-Extension) repository.
-2.  **Create a New Branch:** Create a feature branch for your changes (e.g., `feature/add-new-setting`).
-3.  **Install Dependencies:** Follow the setup instructions in the `README.md`.
-4.  **Make Your Changes:** Implement your feature or fix your bug. Adhere to the project's coding standards and architectural principles.
-5.  **Test Your Changes:** Ensure all tests pass. Add new tests if necessary to cover your changes.
-6.  **Lint and Format:** Run the linter and formatter (e.g., Biome, Ruff) to ensure code quality.
-7.  **Commit Your Changes:** Write clear, concise commit messages.
-8.  **Submit a Pull Request:** Open a Pull Request against the `main` branch of the original repository.
-    *   Ensure your PR description clearly explains the changes and references any related issues.
+2.  **Install dependencies:**
+    bash
+    # Using npm
+    npm install
+    
+    # Using yarn
+    # yarn install
+    
+    # Using pnpm
+    # pnpm install
+    
 
-## 3. Development Environment Setup
+3.  **Build the extension (development mode):**
+    bash
+    # Using npm
+    npm run dev
+    
+    # Using yarn
+    # yarn dev
+    
+    # Using pnpm
+    # pnpm dev
+    
+    This command will typically start a development server and watch for changes.
 
-Refer to the [README.md](https://github.com/chirag127/MinimalistView-Content-Focus-Browser-Extension) for detailed instructions on setting up the development environment, including installing dependencies, running tests, and building the extension.
+4.  **Load the extension in your browser:**
+    *   **Chrome/Edge:** Go to `chrome://extensions` (or `edge://extensions`), enable Developer Mode, and click "Load unpacked" to load the `dist` folder (or the appropriate build output directory).
+    *   **Firefox:** Go to `about:debugging#/runtime/this-firefox`, click "Load Temporary Add-on", and select the `manifest.json` file from the root of the project or the build output.
 
-## 4. Coding Standards & Architecture
+## 3. Contribution Workflow
 
-*   **Language:** This project uses **TypeScript** (Strict mode is enforced).
-*   **Framework/Build:** We utilize **Vite** for building and **TailwindCSS v4** for styling.
-*   **Testing:** **Vitest** for unit tests and **Playwright** for End-to-End (E2E) tests.
-*   **Architecture:** Adheres to **Feature-Sliced Design (FSD)** principles.
-*   **Linting/Formatting:** **Biome** is used for linting and formatting.
-*   **Principles:** Follow SOLID, DRY, and YAGNI principles.
+We follow a standard GitHub pull request workflow:
 
-## 5. Branching Strategy
+1.  **Fork the repository:** Create your own fork of the `chirag127/ZenFlow-Distraction-Free-Reading-Browser-Extension` repository.
+2.  **Create a new branch:** For your feature or bug fix, create a descriptive branch (e.g., `feature/new-reading-style`, `fix/unwanted-element-removal`).
+    bash
+    git checkout -b feature/your-feature-name
+    
+3.  **Make your changes:** Write your code, ensuring it follows the project's coding standards and includes relevant tests.
+4.  **Test your changes:** Run the tests to ensure everything is working as expected.
+    bash
+    # Using npm
+    npm test
+    
+    # Using yarn
+    # yarn test
+    
+    # Using pnpm
+    # pnpm test
+    
+5.  **Commit your changes:** Use conventional commits for your commit messages.
+    bash
+    git commit -m "feat: Add new minimalist theme"
+    
+6.  **Push to your fork:** Push your branch to your forked repository.
+    bash
+    git push origin feature/your-feature-name
+    
+7.  **Open a Pull Request:** Open a pull request from your branch on your fork to the `main` branch of the `chirag127/ZenFlow-Distraction-Free-Reading-Browser-Extension` repository.
 
-*   `main`: Represents the production-ready code.
-*   Feature branches (e.g., `feature/your-feature-name`) should be created off `main`.
-*   Pull Requests should be directed to `main`.
+## 4. Coding Standards
 
-## 6. Pull Request Checklist
+*   **Language:** TypeScript (Strict Mode is enabled).
+*   **Formatting & Linting:** We use **Biome** for code formatting and linting. Ensure your code is formatted correctly before committing.
+    bash
+    # Using npm
+    npm run lint
+    npm run format
+    
+    # Using yarn
+    # yarn lint
+    # yarn format
+    
+    # Using pnpm
+    # pnpm lint
+    # pnpm format
+    
+*   **Frameworks:** React, Vite, Tailwind CSS v4.
+*   **Architecture:** Feature-Sliced Design (FSD) principles are encouraged for organizing code.
+*   **Testing:** Write unit tests using **Vitest** and end-to-end tests using **Playwright**. Aim for comprehensive test coverage.
 
-Before submitting a Pull Request, please ensure:
+## 5. Reporting Bugs
 
-*   [ ] Your code has been formatted and linted.
-*   [ ] All tests are passing.
-*   [ ] New tests have been added for new features or bug fixes.
-*   [ ] The README.md has been updated if necessary.
-*   [ ] Your changes align with the project's architecture and standards.
-*   [ ] You have reviewed the AI Agent Directives in the README to ensure alignment.
+If you encounter a bug, please open an issue in the GitHub repository. Provide as much detail as possible:
 
-## 7. Communication
+*   **Browser and Version:**
+*   **Extension Version:**
+*   **Operating System:**
+*   **Clear Steps to Reproduce:**
+*   **Expected Behavior:**
+*   **Actual Behavior:**
+*   **Screenshots or Videos (if applicable):**
 
-For discussions related to contributions, please use the GitHub Issues and Pull Request features. For broader architectural discussions or complex proposals, please open an issue first to gauge interest and gather feedback.
+## 6. Feature Requests
 
-By contributing, you agree that your contributions will be licensed under the terms of the [CC BY-NC 4.0 License](https://github.com/chirag127/MinimalistView-Content-Focus-Browser-Extension/blob/main/LICENSE).
+Have an idea for a new feature? We'd love to hear it! Please open an issue and describe your idea. Clearly explain the problem it solves and how it would benefit users.
+
+## 7. Code of Conduct
+
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please refer to the `CODE_OF_CONDUCT.md` file for details.
+
+## 8. Questions?
+
+If you have any questions about contributing, feel free to open an issue or reach out to the maintainer.
+
+**Thank you for your contribution to ZenFlow!**
